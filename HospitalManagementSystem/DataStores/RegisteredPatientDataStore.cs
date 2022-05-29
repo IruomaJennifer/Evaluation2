@@ -72,6 +72,27 @@ namespace HospitalManagementSystem.DataStores
             }
         }
 
+        public List<RegisteredPatient> ReadAllRegisteredPatients()
+        {
+            try
+            {
+                using (var session = FluentNHibernateHelper.OpenSession())
+                {
+                    var items = session.Query<RegisteredPatient>();
+                    return items.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            finally
+            {
+                FluentNHibernateHelper.CloseSession();
+            }
+        }
+
         public void Update(RegisteredPatient item)
         {
             try

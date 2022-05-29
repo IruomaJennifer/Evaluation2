@@ -39,16 +39,20 @@ namespace HospitalManagementSystem.Models
             }
         }
 
-        public virtual void AdministerDrugs(string drugName)
+        public virtual void AdministerDrugs(params string[] drugList)
         {
-            Prescription.Add(drugName);
+            foreach (var drug in drugList)
+            {
+                Prescription.Add(drug);
+            }
+            
             
             //then get a list of drugs from the pharmacist
         }
-        public virtual IList<Drug> GetPatientDrugs(Pharmacist pharmacist)
+        public virtual void GetPatientDrugs(Pharmacist pharmacist)
         {
             Drugs= pharmacist.GetDrugs(Prescription);
-            return Drugs;
+            
         }
 
         public virtual Bill ManageBilling(Accountant accountant, decimal paymentMade=0)
@@ -59,7 +63,7 @@ namespace HospitalManagementSystem.Models
                 amtToPay += drug.Price;
             }
             amtToPay += Doctor.ConsultationFee;
-            Bill = new Bill(amtToPay,paymentMade);
+            Bill = new Bill(Patient,amtToPay,paymentMade);
 
             var recieptOfPayment = accountant.ResolveBill(Bill);
             MyDataStore<Bill>.Create(recieptOfPayment);

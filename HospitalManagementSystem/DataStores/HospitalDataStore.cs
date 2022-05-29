@@ -57,7 +57,7 @@ namespace HospitalManagementSystem.DataStores
             {
                 using (var session = FluentNHibernateHelper.OpenSession())
                 {
-                    var item = session.Get<Drug>(id);
+                    var item = session.Get<Hospital>(id);
                     return item;
                 }
             }

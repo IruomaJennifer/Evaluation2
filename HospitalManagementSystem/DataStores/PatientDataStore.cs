@@ -72,6 +72,48 @@ namespace HospitalManagementSystem.DataStores
             }
         }
 
+        public List<Patient> ReadOwingPatients()
+        {
+            try
+            {
+                using (var session = FluentNHibernateHelper.OpenSession())
+                {
+                    var items = session.Query<Patient>().Where(x => x.HasOutstanding == true);
+                    return items.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            finally
+            {
+                FluentNHibernateHelper.CloseSession();
+            }
+        }
+
+        public List<Patient> ReadAllPatients()
+        {
+            try
+            {
+                using (var session = FluentNHibernateHelper.OpenSession())
+                {
+                    var items = session.Query<Patient>();
+                    return items.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            finally
+            {
+                FluentNHibernateHelper.CloseSession();
+            }
+        }
+
         public void Update(Patient item)
         {
             try

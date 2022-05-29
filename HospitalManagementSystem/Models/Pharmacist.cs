@@ -11,12 +11,12 @@ namespace HospitalManagementSystem.Models
         public virtual int Id { get; set; }
         public virtual string FullName { get; set; }
         public virtual Hospital Hospital { get; set; }
-        public virtual HashSet<Drug> AvailableDrugs { get; set; }
+        public virtual ISet<Drug> AvailableDrugs { get; set; }
 
         public Pharmacist()
         {
             //Hospital=new Hospital();
-            //AvailableDrugs=new HashSet<Drug>();
+            AvailableDrugs=new HashSet<Drug>();
         }
 
         public virtual List<Drug> GetDrugs(List<string> prescription)

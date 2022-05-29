@@ -20,10 +20,11 @@ namespace HospitalManagementSystem.Models
 
         }
 
-        public Bill(decimal totalAmt,decimal amountPaid=0)
+        public Bill(Patient patient,decimal totalAmt,decimal amountPaid=0)
         {
             TotalAmount = totalAmt;//add a patient and a hospital
             AmountPaid = amountPaid;
+            Patient = patient;
         }
     }
 }

@@ -71,6 +71,26 @@ namespace HospitalManagementSystem.DataStores
                 FluentNHibernateHelper.CloseSession();
             }
         }
+        public List<Doctor> ReadAlldoctors()
+        {
+            try
+            {
+                using (var session = FluentNHibernateHelper.OpenSession())
+                {
+                    var items = session.Query<Doctor>();
+                    return items.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            finally
+            {
+                FluentNHibernateHelper.CloseSession();
+            }
+        }
 
         public void Update(Doctor item)
         {

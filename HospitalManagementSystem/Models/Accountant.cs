@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalManagementSystem.DataStores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace HospitalManagementSystem.Models
             if (bill.OutstandingAmount > 0)
             {
                 bill.Patient.HasOutstanding = true;
+                MyDataStore<Patient>.Update(bill.Patient);
             }
             
             return bill;

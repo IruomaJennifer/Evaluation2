@@ -8,7 +8,7 @@ namespace HospitalManagementSystem.DataStores
 {
     public class MyDataStore<T>
     {
-        static void Create(T item)
+        public static void Create(T item)
         {
             try
             {
@@ -28,8 +28,8 @@ namespace HospitalManagementSystem.DataStores
                 FluentNHibernateHelper.CloseSession();
             }
         }
-        static T ReadById(int id)
-        {
+       public static T ReadById(int id)
+       {
             try
             {
                 using (var session = FluentNHibernateHelper.OpenSession())
@@ -47,8 +47,8 @@ namespace HospitalManagementSystem.DataStores
             {
                 FluentNHibernateHelper.CloseSession();
             }
-        }
-        static void Delete(T item)
+       }
+        public static void Delete(T item)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace HospitalManagementSystem.DataStores
                 FluentNHibernateHelper.CloseSession();
             }
         }
-        static void Update(T item)
+        public static void Update(T item)
         {
             try
             {

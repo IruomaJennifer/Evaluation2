@@ -4,30 +4,30 @@ using HospitalManagementSystem;
 using HospitalManagementSystem.DataStores;
 using HospitalManagementSystem.Models;
 
-#region added
+#region added to database
 //FluentNHibernateHelper.OpenSession();
 
 var hospital = new Hospital() { HospitalName = "John Hopkins" };
-//IDataStore<Hospital>.Create(hospital);
+//MyDataStore<Hospital>.Create(hospital);
 
-//var drug1 = new Drug("Ativan", 30m);
-//var drug2 = new Drug("Alprazolam", 20m);
-//var drug3 = new Drug("Amlodipine", 15m);
-//var drug4 = new Drug("Diazepam", 35m);
-//var drug5 = new Drug("Acetaminophen", 10m);
-//var drug6 = new Drug("Morphine", 50m);
-//var drug7 = new Drug("Abilify", 32m);
-//var drug8 = new Drug("Aldactone", 20m);
-//var drug9 = new Drug("Lexapro", 11m);
-//var drug10 = new Drug("Lisinopril", 5m);
-//var drug11 = new Drug("Codeine", 18m);
+var drug1 = new Drug("Ativan", 30m);
+var drug2 = new Drug("Alprazolam", 20m);
+var drug3 = new Drug("Amlodipine", 15m);
+var drug4 = new Drug("Diazepam", 35m);
+var drug5 = new Drug("Acetaminophen", 10m);
+var drug6 = new Drug("Morphine", 50m);
+var drug7 = new Drug("Abilify", 32m);
+var drug8 = new Drug("Aldactone", 20m);
+var drug9 = new Drug("Lexapro", 11m);
+var drug10 = new Drug("Lisinopril", 5m);
+var drug11 = new Drug("Codeine", 18m);
 
-//var drugs = new HashSet<Drug>() { drug1, drug2, drug3, drug4, drug5, drug6, drug7, drug8, drug9, drug10, drug11 };
-
-//foreach (var drug in drugs)
+var drugs = new List<Drug>() { drug1, drug2, drug3, drug4, drug5, drug6, drug7, drug8, drug9, drug10, drug11 };
+//foreach (var item in drugs)
 //{
-//    IDataStore<Drug>.Create(drug);
+//    MyDataStore<Drug>.Create(item);
 //}
+
 
 var doctor1 = new Doctor() { FullName = "Dr Oluchi", Hospital = hospital };
 var doctor2 = new Doctor() { FullName = "Dr Oge", Hospital = hospital };
@@ -36,53 +36,55 @@ var doctor4 = new Doctor() { FullName = "Dr Chiazor", Hospital = hospital };
 var doctor5 = new Doctor() { FullName = "Dr Denny", Hospital = hospital };
 var doctor6 = new Doctor() { FullName = "Dr Dan", Hospital = hospital };
 
-//var doctors = new HashSet<Doctor>() { doctor1, doctor2, doctor3, doctor4, doctor5, doctor6 };
-//foreach (var doctor in doctors)
+var doctors = new List<Doctor>() { doctor1, doctor2, doctor3, doctor4, doctor5, doctor6 };
+//foreach (var item in doctors)
 //{
-//    IDataStore<Doctor>.Create(doctor);
+//    MyDataStore<Doctor>.Create(item);
 //}
 
-//var nurse1 = new Nurse() { FullName = "Nurse Desmond", Hospital = hospital };
-//var nurse2 = new Nurse() { FullName = "Nurse Dammy", Hospital = hospital };
-//var nurse3 = new Nurse() { FullName = "Nurse Jude", Hospital = hospital };
-//var nurse4 = new Nurse() { FullName = "Nurse Felicia", Hospital = hospital };
-//var nurse5 = new Nurse() { FullName = "Nurse Sam", Hospital = hospital };
 
-//var nurses = new HashSet<Nurse>() { nurse1, nurse2, nurse3, nurse4, nurse5 };
-//foreach (var nurse in nurses)
+var nurse1 = new Nurse() { FullName = "Nurse Desmond", Hospital = hospital };
+var nurse2 = new Nurse() { FullName = "Nurse Dammy", Hospital = hospital };
+var nurse3 = new Nurse() { FullName = "Nurse Jude", Hospital = hospital };
+var nurse4 = new Nurse() { FullName = "Nurse Felicia", Hospital = hospital };
+var nurse5 = new Nurse() { FullName = "Nurse Sam", Hospital = hospital };
+var nurses = new List<Nurse>() { nurse1, nurse2, nurse3, nurse4, nurse5 };
+//foreach (var item in nurses)
 //{
-//    IDataStore<Nurse>.Create(nurse);
+//    MyDataStore<Nurse>.Create(item);
 //}
 
-//var pharmacist1 = new Pharmacist() { FullName = "Pharmacist Emmanuel", Hospital = hospital };
-//var pharmacist2 = new Pharmacist() { FullName = "Pharmacist Adora", Hospital = hospital };
-//var pharmacist3 = new Pharmacist() { FullName = "Pharmacist Betty", Hospital = hospital };
-//var pharmacist4 = new Pharmacist() { FullName = "Pharmacist Jane", Hospital = hospital };
 
-//var pharmacists = new HashSet<Pharmacist>() { pharmacist1, pharmacist2, pharmacist3, pharmacist4 };
-//foreach (var pharmacist in pharmacists)
+var pharmacist1 = new Pharmacist() { FullName = "Pharmacist Emmanuel", Hospital = hospital };
+var pharmacist2 = new Pharmacist() { FullName = "Pharmacist Adora", Hospital = hospital };
+var pharmacist3 = new Pharmacist() { FullName = "Pharmacist Betty", Hospital = hospital };
+var pharmacist4 = new Pharmacist() { FullName = "Pharmacist Jane", Hospital = hospital };
+
+var pharmacists = new List<Pharmacist>() { pharmacist1, pharmacist2, pharmacist3, pharmacist4 };
+//foreach (var item in pharmacists)
 //{
-//    IDataStore<Pharmacist>.Create(pharmacist);
+//    MyDataStore<Pharmacist>.Create(item);
 //}
 
-//var pastCondition1 = new List<string>()
-//{
-//    "Malaria",
-//    "High blood pressure",
-//    "Influenza" };
-//var medicalHistory1 = new MedicalHistory() { PastConditions = pastCondition1 };
-//IDataStore<MedicalHistory>.Create(medicalHistory1);
+var pastCondition1 = new List<string>()
+{
+    "Malaria",
+    "High blood pressure",
+    "Influenza" };
+var medicalHistory1 = new MedicalHistory() { PastConditions = pastCondition1 };
+//MyDataStore<MedicalHistory>.Create(medicalHistory1);
 
-//drug1.Pharmacists.Add(pharmacist1);
-//IDataStore<Drug>.Update(drug1);
-//drug5.Pharmacists.Add(pharmacist1);
-//IDataStore<Drug>.Update(drug5);
+drug1.Pharmacists.Add(pharmacist1);
+//MyDataStore<Drug>.Update(drug1);
+
+drug5.Pharmacists.Add(pharmacist1);
+//MyDataStore<Drug>.Update(drug5);
 
 var receptionist = new Receptionist() { FullName = "Lovely Doe", Hospital = hospital };
-//IDataStore<Receptionist>.Create(receptionist);
+//MyDataStore<Receptionist>.Create(receptionist);
 
 var accountant = new Accountant() { FullName = "John Doe", Hospital = hospital };
-//IDataStore<Accountant>.Create(accountant);
+//MyDataStore<Accountant>.Create(accountant);
 
 
 var patient1 = new RegisteredPatient()
@@ -131,17 +133,11 @@ var patient6 = new Patient()
     PatientName = "Gwenyfar",
     ContactNo = "+904577847297"
 };
-//var patients = new HashSet<Patient>() { patient1, patient2, patient3, patient4, patient5, patient6, patient7 };
-//foreach (var patient in patients)
+var patients = new List<Patient>() { patient1, patient2, patient3, patient4, patient5, patient6, patient7 };
+//foreach (var item in patients)
 //{
-//    IDataStore<Patient>.Delete(patient);
+//    MyDataStore<Patient>.Create(item);
 //}
-#endregion
-
-
-
-
-
 
 var pastCondition2 = new List<string>()
 {
@@ -186,11 +182,10 @@ var medicalHistory4 = new MedicalHistory() { PastConditions = pastCondition4, Pa
 var medicalHistory5 = new MedicalHistory() { PastConditions = pastCondition5, Patient = patient5 };
 var medicalHistory6 = new MedicalHistory() { PastConditions = pastCondition6, Patient = patient6 };
 var medicalHistory7 = new MedicalHistory() { PastConditions = pastCondition7, Patient = patient7 };
-
-//var medicalHistories = new List<MedicalHistory>() { medicalHistory2, medicalHistory3, medicalHistory4, medicalHistory5, medicalHistory6, medicalHistory7 };
-//foreach (var medicalHistory in medicalHistories)
+var medicalHistories = new List<MedicalHistory>() { medicalHistory2, medicalHistory3, medicalHistory4, medicalHistory5, medicalHistory6, medicalHistory7 };
+//foreach (var item in medicalHistories)
 //{
-//    IDataStore<MedicalHistory>.Create(medicalHistory);
+//    MyDataStore<MedicalHistory>.Create(item);
 //}
 
 var appointment1 = new Appointment(patient1, doctor2, new DateTime(2022, 5, 2));
@@ -200,18 +195,47 @@ var appointment4 = new Appointment(patient4, doctor1, new DateTime(2022, 2, 21))
 var appointment5 = new Appointment(patient5, doctor5, new DateTime(2022, 8, 28));
 var appointment6 = new Appointment(patient6, doctor2, new DateTime(2022, 12, 12));
 var appointments = new List<Appointment>() { appointment1, appointment2, appointment3, appointment4, appointment5, appointment6 };
-
-//foreach (var appointment in appointments)
+//foreach (var item in appointments)
 //{
-//    IDataStore<Appointment>.Create(appointment);
+//    MyDataStore<Appointment>.Create(item);
 //}
 
+#endregion
 
+
+
+#region attempt to query database
 
 doctor2.Appointments.Add(appointment1);
+
+doctor2.Appointments.Add(appointment6);
+
+doctor2.ConsultationFee = 50m;
+
+var appointment = doctor2.SeePatient();
+appointment.AdministerDrugs("Ativan", "Diazepam", "Lisinopril");
+pharmacist1.AvailableDrugs.Add(drug9);
+pharmacist1.AvailableDrugs.Add(drug1);
+appointment.GetPatientDrugs(pharmacist1);
+var bill = appointment.ManageBilling(accountant);
+
+Console.WriteLine($"{bill.TotalAmount }\n {bill.AmountPaid}\n {bill.OutstandingAmount}");
+
+var query = new PatientDataStore();
+var owingPatients = query.ReadOwingPatients();
+var allPatients = query.ReadAllPatients();
+
+var query2 = new DoctorDataStore();
+var allDoctors = query2.ReadAlldoctors();
+
+var query3 = new RegisteredPatientDataStore();
+var allRegisteredPatients = query3.ReadAllRegisteredPatients();
+
+//I'm having so much errors interacting with my database
+
 //IDataStore<Doctor>.Update(doctor2);
 
-
+#endregion
 
 //doctor2.Appointments.Enqueue(appointment5);
 //doctor1.Appointments.Enqueue(appointment4);
@@ -220,7 +244,7 @@ doctor2.Appointments.Add(appointment1);
 //doctor5.Appointments.Enqueue(appointment6);
 
 
-    
+
 
 
 
