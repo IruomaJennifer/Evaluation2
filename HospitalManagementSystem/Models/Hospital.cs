@@ -16,5 +16,6 @@ namespace HospitalManagementSystem.Models
         public virtual Receptionist Receptionist { get; set; }
         public virtual Accountant Accountant { get; set; }
         public virtual HashSet<Patient> Patients { get; set; }
+        
     }
 }

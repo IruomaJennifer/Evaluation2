@@ -23,35 +23,35 @@ namespace HospitalManagementSystem.Models
         {
             Prescription = new List<string>();
         }
-        public Appointment(Patient patient,Doctor doctor,DateTime time,Hospital hospital):this()
+        public Appointment(Patient patient,Doctor doctor,DateTime time):this()
         {
-            Hospital = hospital;
+       
             Doctor = doctor;
             Patient = patient;
             AppointmentTime = time;
         }
 
-        public void ReviewMedicalCondition()
+        public virtual void ReviewMedicalCondition()
         {
             foreach (var item in Patient.MedicalHistory.PastConditions)
             {
-                Console.WriteLine($"{item.Key} in {item.Value}");
+                Console.WriteLine($"{item} ");
             }
         }
 
-        public void AdministerDrugs(string drugName)
+        public virtual void AdministerDrugs(string drugName)
         {
             Prescription.Add(drugName);
             
             //then get a list of drugs from the pharmacist
         }
-        public List<Drug> GetPatientDrugs(Pharmacist pharmacist)
+        public virtual IList<Drug> GetPatientDrugs(Pharmacist pharmacist)
         {
             Drugs= pharmacist.GetDrugs(Prescription);
             return Drugs;
         }
 
-        public Bill ManageBilling(decimal paymentMade=0)
+        public virtual Bill ManageBilling(Accountant accountant, decimal paymentMade=0)
         {
             decimal amtToPay = 0;
             foreach (var drug in Drugs)
@@ -61,8 +61,8 @@ namespace HospitalManagementSystem.Models
             amtToPay += Doctor.ConsultationFee;
             Bill = new Bill(amtToPay,paymentMade);
 
-            var recieptOfPayment = Accountant.ResolveBill(Bill);
-            IDataStore<Bill>.Create(recieptOfPayment);
+            var recieptOfPayment = accountant.ResolveBill(Bill);
+            MyDataStore<Bill>.Create(recieptOfPayment);
             return recieptOfPayment;
         }
 

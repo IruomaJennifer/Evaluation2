@@ -17,7 +17,7 @@ namespace HospitalManagementSystem.Mappings
             Map(x => x.ContactNo);
             Map(x => x.Gender);
             HasOne(x => x.Appointment);
-            HasOne(x => x.Hospital);
+            
 
         }
     }

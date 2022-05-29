@@ -14,11 +14,13 @@ namespace HospitalManagementSystem.Mappings
         {
             Id(x => x.Id);
             Map(x => x.HospitalName);
-            HasMany(x => x.Doctors).Inverse();
-            HasMany(x => x.Nurses).Inverse();
+            HasMany(x => x.Doctors);
+            HasMany(x => x.Nurses);
+            HasMany(x => x.Pharmacists);
             HasOne(x => x.Receptionist);
             HasOne(x => x.Accountant);
             HasMany(x => x.Patients);
+            
         }
     }
 }

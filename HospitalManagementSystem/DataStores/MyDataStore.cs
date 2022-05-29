@@ -1,5 +1,4 @@
-﻿using HospitalManagementSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace HospitalManagementSystem.DataStores
 {
-    public class AppointmentDataStore : IDataStore<Appointment>
+    public class MyDataStore<T>
     {
-        public void Create(Appointment item)
+        static void Create(T item)
         {
             try
             {
-                using (var session = FluentNHibernateHelper.OpenSession())
+                using(var session = FluentNHibernateHelper.OpenSession())
                 {
                     using var tx = session.BeginTransaction();
                     session.Save(item);
                     tx.Commit();
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -29,8 +28,27 @@ namespace HospitalManagementSystem.DataStores
                 FluentNHibernateHelper.CloseSession();
             }
         }
-
-        public void Delete(Appointment item)
+        static T ReadById(int id)
+        {
+            try
+            {
+                using (var session = FluentNHibernateHelper.OpenSession())
+                {
+                   var item = session.Get<T>(id);
+                    return item;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return default;
+            }
+            finally
+            {
+                FluentNHibernateHelper.CloseSession();
+            }
+        }
+        static void Delete(T item)
         {
             try
             {
@@ -50,31 +68,8 @@ namespace HospitalManagementSystem.DataStores
                 FluentNHibernateHelper.CloseSession();
             }
         }
-
-        public Appointment Read(int id)
+        static void Update(T item)
         {
-            try
-            {
-                using (var session = FluentNHibernateHelper.OpenSession())
-                {
-                    var item = session.Get<Appointment>(id);
-                    return item;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-            finally
-            {
-                FluentNHibernateHelper.CloseSession();
-            }
-        }
-
-        public void Update(Appointment item)
-        {
-
             try
             {
                 using (var session = FluentNHibernateHelper.OpenSession())
@@ -93,5 +88,6 @@ namespace HospitalManagementSystem.DataStores
                 FluentNHibernateHelper.CloseSession();
             }
         }
+
     }
 }

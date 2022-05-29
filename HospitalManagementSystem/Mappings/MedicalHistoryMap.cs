@@ -13,8 +13,10 @@ namespace HospitalManagementSystem.Mappings
         public MedicalHistoryMap()
         {
             Id(x => x.Id);
-            Map(x => x.PastConditions);
             HasOne(x => x.Patient);
+            Map(x => x.PastConditions);
+                //.Table("PastConditionsTable")
+                //.Element("PastConditionId", m => { m.Type<string>(); });
         }
     }
 }

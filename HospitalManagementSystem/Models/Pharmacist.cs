@@ -13,8 +13,13 @@ namespace HospitalManagementSystem.Models
         public virtual Hospital Hospital { get; set; }
         public virtual HashSet<Drug> AvailableDrugs { get; set; }
 
+        public Pharmacist()
+        {
+            //Hospital=new Hospital();
+            //AvailableDrugs=new HashSet<Drug>();
+        }
 
-        public List<Drug> GetDrugs(List<string> prescription)
+        public virtual List<Drug> GetDrugs(List<string> prescription)
         {
             
             var patientDrugList = new List<Drug>();

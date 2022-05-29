@@ -30,7 +30,7 @@ namespace HospitalManagementSystem
             sessionFactory = Fluently.Configure().Database(
                 MsSqlConfiguration.MsSql2012.ConnectionString(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Asus\Documents\HospitalSystem.mdf;Integrated Security=True;Connect Timeout=30"))
                 .Mappings(map => map.FluentMappings.AddFromAssemblyOf<Program>())
-                .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(true, true))
+                //.ExposeConfiguration(cfg => new SchemaExport(cfg).Create(true, true))
                 .BuildSessionFactory();
         }
 

@@ -12,7 +12,7 @@ namespace HospitalManagementSystem.Models
         public virtual string FullName { get; set; }
         public virtual Hospital Hospital { get; set; }
         
-        public static Bill ResolveBill(Bill bill)
+        public virtual Bill ResolveBill(Bill bill)
         {
             bill.OutstandingAmount = bill.TotalAmount - bill.AmountPaid;
 

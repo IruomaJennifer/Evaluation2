@@ -16,6 +16,7 @@ namespace HospitalManagementSystem.Mappings
             Map(x => x.FullName);
             References(x => x.Hospital);
             HasManyToMany(x => x.AvailableDrugs);
+
         }
     }
 }

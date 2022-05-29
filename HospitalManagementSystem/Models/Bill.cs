@@ -15,6 +15,11 @@ namespace HospitalManagementSystem.Models
         public virtual Patient Patient { get; set; }
         public virtual Hospital Hospital { get; set; }
 
+        public Bill()
+        {
+
+        }
+
         public Bill(decimal totalAmt,decimal amountPaid=0)
         {
             TotalAmount = totalAmt;//add a patient and a hospital

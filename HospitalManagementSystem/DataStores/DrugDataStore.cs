@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalManagementSystem.DataStores
 {
-    public class DrugDataStore:IDataStore<Drug>
+    public class DrugDataStore:MyDataStore<Drug>
     {
     }
 }

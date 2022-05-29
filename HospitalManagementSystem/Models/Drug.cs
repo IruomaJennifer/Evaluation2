@@ -12,11 +12,17 @@ namespace HospitalManagementSystem.Models
         public virtual string Name { get; set; }
         public virtual decimal Price { get; set; }
         public virtual int CountOfPurchase { get; set; } = 0;
-        public virtual List<Pharmacist> Pharmacists { get; set; }
-        
-        public Drug(string name,decimal price)
+        public virtual ISet<Pharmacist> Pharmacists { get; set; }
+
+        public Drug()
         {
-            Pharmacists = new List<Pharmacist>();
+            Pharmacists = new HashSet<Pharmacist>();
+        }
+
+        public Drug(string name,decimal price):this()
+        {
+            Price = price;
+            Name = name;
         }
     }
 }

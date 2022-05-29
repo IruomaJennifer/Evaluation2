@@ -17,6 +17,7 @@ namespace HospitalManagementSystem.Mappings
             Map(x => x.Price);
             Map(x => x.CountOfPurchase);
             HasManyToMany(x => x.Pharmacists);
+                
         }
     }
 }

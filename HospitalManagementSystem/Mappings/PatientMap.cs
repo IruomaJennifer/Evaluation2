@@ -19,6 +19,7 @@ namespace HospitalManagementSystem.Mappings
             Map(x => x.HasOutstanding);
             HasOne(x => x.MedicalHistory);
             HasOne(x => x.Appointment);
+            References(x => x.Hospital);
         }
     }
 }

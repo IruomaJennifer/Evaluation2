@@ -16,11 +16,13 @@ namespace HospitalManagementSystem.Models
         public virtual bool HasOutstanding { get; set; }
         public virtual MedicalHistory MedicalHistory { get; set; }
         public virtual Appointment Appointment { get; set; }
+        public virtual Hospital Hospital { get; set; }
 
-        public virtual Appointment BookAppointment(Hospital hospital,Doctor doctor,DateTime time)
+
+        public virtual Appointment BookAppointment(Doctor doctor,DateTime time)
         {
-            var appointment = new Appointment(this, doctor, time, hospital);
-            IDataStore<Appointment>.Create(appointment);
+            var appointment = new Appointment(this, doctor, time);
+            MyDataStore<Appointment>.Create(appointment);
             return appointment;
         }
     }
