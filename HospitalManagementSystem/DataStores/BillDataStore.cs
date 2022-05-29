@@ -7,7 +7,90 @@ using System.Threading.Tasks;
 
 namespace HospitalManagementSystem.DataStores
 {
-    public class BillDataStore:MyDataStore<Bill>
+    public class BillDataStore : IDataStore<Bill>
     {
+        public void Create(Bill item)
+        {
+            try
+            {
+                using (var session = FluentNHibernateHelper.OpenSession())
+                {
+                    using var tx = session.BeginTransaction();
+                    session.Save(item);
+                    tx.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                FluentNHibernateHelper.CloseSession();
+            }
+        }
+
+        public void Delete(Bill item)
+        {
+            try
+            {
+                using (var session = FluentNHibernateHelper.OpenSession())
+                {
+                    using var tx = session.BeginTransaction();
+                    session.Delete(item);
+                    tx.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                FluentNHibernateHelper.CloseSession();
+            }
+        }
+
+        public Bill Read(int id)
+        {
+            try
+            {
+                using (var session = FluentNHibernateHelper.OpenSession())
+                {
+                    var item = session.Get<Bill>(id);
+                    return item;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+            finally
+            {
+                FluentNHibernateHelper.CloseSession();
+            }
+        }
+
+        public void Update(Bill item)
+        {
+            try
+            {
+                using (var session = FluentNHibernateHelper.OpenSession())
+                {
+                    using var tx = session.BeginTransaction();
+                    session.Update(item);
+                    tx.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                FluentNHibernateHelper.CloseSession();
+            }
+        }
     }
 }
